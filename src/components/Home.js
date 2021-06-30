@@ -2,16 +2,14 @@
 
 import React, { Component } from "react";
 import AccountBalance from "./AccountBalance";
+import {Link} from 'react-router-dom';
+import {Nav} from "./Nav";
 
 class Home extends Component {
   render() {
     return (
       <div>
-        <div id="nav">
-          <img src="logo192.png" id="logo" alt="bank" />
-          <h1>Bank of React</h1>
-        </div>
-
+        <Nav />
         <AccountBalance accountBalance={this.props.accountBalance} />
       </div>
     );
