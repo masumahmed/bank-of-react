@@ -13,6 +13,21 @@ code {
   background-color: #282C34;
 }
 
+#nav a {
+  color: white;
+  text-decoration: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: top;
+  line-height: 60px;
+  margin-left: 15px;
+}
+
+#nav a:hover {
+  text-decoration: underline;
+}
+
 #nav #logo {
   display: inline;
   width: 50px;

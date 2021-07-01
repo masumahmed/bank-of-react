@@ -9,6 +9,7 @@ export class Nav extends Component {
       <div id="nav">
         <img src="logo192.png" id="logo" alt="bank" />
         <h1>Bank of React</h1>
+        <Link exact to="/">Home</Link>
         <Link to="/userProfile">User Profile</Link>
       </div>
     );
