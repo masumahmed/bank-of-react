@@ -3,13 +3,17 @@
 import React, { Component } from "react";
 import AccountBalance from "./AccountBalance";
 import { Nav } from "./Nav";
+import Footer from "./Footer";
 
 class Home extends Component {
   render() {
     return (
       <div>
         <Nav />
-        <AccountBalance accountBalance={this.props.accountBalance} />
+        <div id="main">
+          <AccountBalance accountBalance={this.props.accountBalance} />
+        </div>
+		<Footer></Footer>
       </div>
     );
   }
