@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 
 class LogIn extends Component {
   constructor() {
@@ -38,23 +39,26 @@ class LogIn extends Component {
     return (
       <div id="Login">
         <Nav></Nav>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <h4>Username</h4>
-            <input
-              type="text"
-              name="userName"
-              onChange={this.handleChange}
-              value={this.state.user.userName}
-            />
-          </div>
-          <div>
-			<h4>Password</h4>
-            <input type="password" name="password" />
-          </div>
-          <button>Log In</button>
-		  <button>Sign Up</button>
-        </form>
+        <div id="main">
+          <form onSubmit={this.handleSubmit}>
+            <div>
+              <h4>Username</h4>
+              <input
+                type="text"
+                name="userName"
+                onChange={this.handleChange}
+                value={this.state.user.userName}
+              />
+            </div>
+            <div>
+              <h4>Password</h4>
+              <input type="password" name="password" />
+            </div>
+            <button>Log In</button>
+            <button>Sign Up</button>
+          </form>
+        </div>
+		<Footer></Footer>
       </div>
     );
   }
