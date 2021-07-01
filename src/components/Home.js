@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 import AccountBalance from "./AccountBalance";
-import {Nav} from "./Nav";
+import { Nav } from "./Nav";
 
 class Home extends Component {
   render() {
