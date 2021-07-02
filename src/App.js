@@ -14,6 +14,10 @@ class App extends Component {
 
     this.state = {
       accountBalance: 14568.27,
+      debitInfo: [],
+      debitAmount: 0,
+      creditInfo: [],
+      creditAmount: 0,
       currentUser: {
         userName: "joe_shmo",
         firstName: "Joe",
@@ -24,6 +28,27 @@ class App extends Component {
       },
     };
   }
+
+  componentDidMount = () => {
+    fetch("https://moj-api.herokuapp.com/debits")
+      .then((response) => {
+        const data = response.data;
+
+        let temp = [];
+
+        for (let i = 0; i < data.length; i++) {
+          temp = [data[i].description, data[i].amount, data[i].date];
+
+          this.setState({
+            debitInfo: [...this.state.debitInfo, temp],
+            accountBalance: this.state.accountBalance - data[i].amount,
+            debitAmount: this.state.debitAmount + data[i].amount,
+          });
+        }
+      })
+      .catch((err) => console.log(err));
+    console.log(this.props.debitInfo);
+  };
 
   render() {
     const HomeComponent = () => (
@@ -36,7 +61,13 @@ class App extends Component {
         memberSince={this.state.currentUser.memberSince}
       />
     );
-    const DebitComponent = () => <Debit />;
+    const DebitComponent = () => (
+      <Debit
+        debitInfo={this.state.debitInfo}
+        debitAmount={this.state.debitAmount}
+      />
+    );
+
     const CreditComponent = () => <Credit />;
     const LogInComponent = () => (
       <LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />

@@ -20,6 +20,7 @@ class UserProfile extends Component {
             <div>Phone {this.props.userObject.phone}</div>
             <div>Joined {this.props.memberSince}</div>
           </div>
+		  
         </div>
         <Footer></Footer>
       </div>
