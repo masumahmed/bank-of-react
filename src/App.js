@@ -16,10 +16,10 @@ class App extends Component {
       accountBalance: 14568.27,
       currentUser: {
         userName: "joe_shmo",
-		firstName: "Joe",
-		lastName: 'Shmo',
-		email: "JoeShmo@example.com",
-		phone: "555-555-5555",
+        firstName: "Joe",
+        lastName: "Shmo",
+        email: "JoeShmo@example.com",
+        phone: "555-555-5555",
         memberSince: "07/23/1996",
       },
     };
@@ -31,13 +31,13 @@ class App extends Component {
     );
     const UserProfileComponent = () => (
       <UserProfile
-		userObject={this.state.currentUser}
+        userObject={this.state.currentUser}
         userName={this.state.currentUser.userName}
         memberSince={this.state.currentUser.memberSince}
       />
     );
-	const DebitComponent = () => <Debit />;
-	const CreditComponent = () => <Credit />;
+    const DebitComponent = () => <Debit />;
+    const CreditComponent = () => <Credit />;
     const LogInComponent = () => (
       <LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />
     );
