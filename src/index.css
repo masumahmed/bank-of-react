@@ -49,6 +49,19 @@ code {
   padding-left: 5px;
 }
 
+#home {
+  background-color: white;
+  color: black;
+  width: 500px;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+#home h1 {
+  margin-top: 0;
+}
+
 #profile-container {
   min-height: 100vh;
 }

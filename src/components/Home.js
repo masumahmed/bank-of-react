@@ -11,9 +11,12 @@ class Home extends Component {
       <div>
         <Nav />
         <div id="main">
-          <AccountBalance accountBalance={this.props.accountBalance} />
+          <div id="home">
+            <h1>Account Overview</h1>
+            <AccountBalance accountBalance={this.props.accountBalance} />
+          </div>
         </div>
-		<Footer></Footer>
+        <Footer></Footer>
       </div>
     );
   }
