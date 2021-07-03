@@ -13,7 +13,12 @@ class Home extends Component {
 				<div id="main">
 					<div id="home">
 						<h1>Account Overview</h1>
-						<AccountBalance accountBalance={this.props.accountBalance} />
+						<AccountBalance
+							accountBalance={this.state.accountBalance}
+							debitAmount={this.state.debitAmount}
+							creditAmount={this.state.creditAmount}
+
+						/>
 					</div>
 				</div>
 				<Footer></Footer>

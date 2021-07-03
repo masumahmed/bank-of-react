@@ -86,7 +86,7 @@ export class Debit extends Component {
 						<AccountBalance accountBalance={this.props.accountBalance} />
 					</div>
 					<div id="Debit">
-						<h1>Debit</h1>
+						<h1>Debits</h1>
 						<form onSubmit={this.handleSubmit}>
 							<input
 								placeholder="description"

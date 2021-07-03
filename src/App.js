@@ -13,7 +13,7 @@ class App extends Component {
 		super(props);
 
 		this.state = {
-			accountBalance: 10000.0,
+			accountBalance: 10000.00,
 			debitInfo: [],
 			debitAmount: 0,
 			creditInfo: [],
@@ -39,11 +39,36 @@ class App extends Component {
 			.then((response) => response.json())
 			.then((data) => this.setState({ creditInfo: data }))
 			.catch((err) => console.log(err));
+
+		let debitTotal = 0;
+		for (let i = 0; i < Object.keys(this.state.debitInfo).length; i++) {
+			debitTotal += this.state.debitInfo[i].amount;
+			console.log(this.state.debitInfo[i].amount);
+		}
+
+		let creditTotal = 0;
+		for (let i = 0; i < Object.keys(this.state.creditInfo).length; i++) {
+			creditTotal += this.state.creditInfo[i].amount;
+			console.log(this.state.creditInfo[i].amount);
+			console.log("test");
+		}
+
+		this.setState({
+			debitAmount: debitTotal,
+			creditAmount: creditTotal
+		});
+
+		console.log(this.state.debitAmount);
+		console.log(this.state.creditAmount);
 	};
 
 	render() {
 		const HomeComponent = () => (
-			<Home accountBalance={this.state.accountBalance} />
+			<Home 
+				accountBalance={this.state.accountBalance}
+				debitAmount={this.state.debitAmount}
+				creditAmount={this.state.creditAmount}
+			/>
 		);
 		const UserProfileComponent = () => (
 			<UserProfile
