@@ -56,8 +56,12 @@ code {
 	padding: 30px;
 	border-radius: 5px;
 	display: flexbox;
-	margin: 0 50px;
+	margin: 0 auto;
 	margin-bottom: 50px;
+
+	min-width: 500px;
+	max-width: 1000px;
+
 
 	h1 {
 		margin-top: 0;
@@ -100,7 +104,11 @@ code {
 	padding: 30px;
 	border-radius: 5px;
 	display: flexbox;
-	margin: 0 50px;
+	margin: 0 auto;
+	margin-bottom: 50px;
+	
+	min-width: 500px;
+	max-width: 1000px;
 
 	h1 {
 		margin-top: 0;
@@ -114,7 +122,11 @@ code {
 	padding: 30px;
 	border-radius: 5px;
 	display: flexbox;
-	margin: 0 50px;
+	margin: 0 auto;
+	margin-bottom: 50px;
+	
+	min-width: 500px;
+	max-width: 1000px;
 
 	h1 {
 		margin-top: 0;

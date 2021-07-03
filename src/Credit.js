@@ -4,6 +4,78 @@ import Footer from "./components/Footer";
 import AccountBalance from "./components/AccountBalance";
 
 export class Credit extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			description: '',
+			amount: ''
+		};
+
+		this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+		this.handleAmountChange = this.handleAmountChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+	}
+
+	handleDescriptionChange = (event) => {
+		this.setState({
+			description: event.target.value
+		});
+	}
+
+	handleAmountChange = (event) => {
+		this.setState({
+			amount: event.target.value
+		});
+	}
+
+	randomString = (length, chars) => {
+		var result = '';
+		for (var i = 0; i<length; i++) {
+			if(i === 8 || i === 12 || i === 16 || i === 20)
+				result+= '-'
+			result += chars[Math.floor(Math.random() * chars.length)];
+		}
+		return result;
+	}
+
+	handleSubmit(event) {
+		// base case if one or more field is empty
+		if (this.state.description === "" || this.state.amount === ""){
+			alert("one or more fields are empty");
+			return;
+		}
+
+		event.preventDefault();
+		let description = this.state.description;
+		let amount = this.state.amount;
+		let obj = this.props.creditInfo;
+
+		let d = new Date();
+		let timeString = d.getFullYear() + "-" + (d.getMonth() < 10 ? "0" + d.getMonth(): d.getMonth()) + "-" + (d.getDate() < 10 ? "0" + d.getDate(): d.getDate()) + "T";
+		timeString +=  (d.getHours() < 10 ? "0" + d.getHours(): d.getHours()) + ":" +  (d.getMinutes() < 10 ? "0" + d.getMinutes(): d.getMinutes()) + ":" +  (d.getSeconds() < 10 ? "0" + d.getSeconds(): d.getSeconds()) + ":" +  (d.getMilliseconds() < 10 ? "0" + d.getMilliseconds(): d.getMilliseconds()) + "Z";
+
+		let randID = this.randomString(32, '0123456789abcdefghijklmnopqrstuvwxyz');
+
+		let temp = {
+			"id": randID,
+			"description": description,
+			"amount": amount,
+			"date": timeString
+		};
+
+		obj.unshift(temp);
+
+		this.setState({
+			creditInfo: obj
+		});
+
+		this.setState({
+			description: "",
+			amount: ""
+		})
+	}
+
 	render() {
 		return (
 			<div>
@@ -15,13 +87,25 @@ export class Credit extends Component {
 					</div>
 					<div id="Credit">
 						<h1>Credit</h1>
-						<input placeholder="Description" type="text"></input>
-						<input placeholder="amount" type="text"></input>
-						<button onClick={this.addCredit}>Add Credit</button>
-						<div id="input"></div>
+						<form onSubmit={this.handleSubmit}>
+							<input
+								placeholder="description"
+								value={this.state.description}
+								onChange={this.handleDescriptionChange}
+								type="text"
+							/>
+							<input
+								placeholder="amount"
+								value={this.state.amount}
+								onChange={this.handleAmountChange}
+								type="text"
+							/>
+							<input type="submit" value="Add Credit" />
+						</form>
 						<div id="creditList">
 							{this.props.creditInfo.map((x, index) => (
-								<div key={index}>
+								<div key={index} >
+									<p> ID: {x.id}</p>
 									<p> Description: {x.description}</p>
 									<p> Amount: ${x.amount} </p>
 									<p> Date: {x.date} </p>
